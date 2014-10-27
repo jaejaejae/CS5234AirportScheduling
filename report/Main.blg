@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Main.aux
+The style file: unsrt.bst
+Database file #1: ref.bib
+Warning--I didn't find a database entry for "algo:p2"
+Warning--empty journal in Lenstra2006
+Warning--empty journal in gupta1979optimal
+You've used 6 entries,
+            1791 wiz_defined-function locations,
+            485 strings with 4350 characters,
+and the built_in function-call counts, 1426 in all, are:
+= -- 136
+> -- 51
+< -- 2
++ -- 19
+- -- 13
+* -- 81
+:= -- 218
+add.period$ -- 19
+call.type$ -- 6
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 71
+empty$ -- 140
+format.name$ -- 13
+if$ -- 327
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 7
+newline$ -- 33
+num.names$ -- 6
+pop$ -- 24
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 39
+stack$ -- 0
+substring$ -- 89
+swap$ -- 19
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 16
+width$ -- 7
+write$ -- 66
+(There were 3 warnings)

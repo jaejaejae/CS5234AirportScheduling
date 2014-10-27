@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{Lenstra2006}
+Jan~Karel Lenstra, Christos~H Papadimitriou, and Frits C~R Spieksma.
+\newblock {Interval Scheduling : A Survey}.
+\newblock pages 1--33, 2006.
+
+\bibitem{FordL.r.1962}
+Jr. {Ford, L.r.} and D.R. Fulkerson.
+\newblock {\em {Flows in networks}}.
+\newblock Princeton University Press, Princeton, New Jersey, 1962.
+
+\bibitem{hashimoto1971wire}
+Akihiro Hashimoto and James Stevens.
+\newblock Wire routing by optimizing channel assignment within large apertures.
+\newblock In {\em Proceedings of the 8th Design Automation Workshop}, pages
+  155--169. ACM, 1971.
+
+\bibitem{gertsbakh1978minimal}
+Ilya Gertsbakh and Helman~I Stern.
+\newblock Minimal resources for fixed and variable job schedules.
+\newblock {\em Operations Research}, 26(1):68--85, 1978.
+
+\bibitem{gupta1979optimal}
+Udaiprakash~I Gupta and JY-T DT~Leung.
+\newblock An optimal solution for the channel-assignment problem.
+\newblock 1979.
+
+\bibitem{dekel1983parallel}
+Eliezer Dekel and Sartaj Sahni.
+\newblock Parallel scheduling algorithms.
+\newblock {\em Operations Research}, 31(1):24--49, 1983.
+
+\end{thebibliography}
