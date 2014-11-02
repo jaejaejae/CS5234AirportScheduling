@@ -1,0 +1,23 @@
+CREATE TABLE flight (
+    day_of_week INT not null,
+    fl_date INT not null,
+    fl_month INT not null,
+    fl_year INT not null,
+    unique_carrier CHAR(2) not null,
+    fl_num INT not null,
+    origin_airport_id INTEGER not null,
+    dest_airport_id INTEGER not null,
+    crs_dep_time CHAR(4) not null,
+    dep_time CHAR(4) not null,
+    dep_delay INTEGER DEFAULT 0,
+    crs_arr_time CHAR(4) not null,
+    arr_time CHAR(4) not null,
+    arr_delay INTEGER not null,
+    cancelled INTEGER DEFAULT 0,
+    carrier_delay INTEGER DEFAULT 0,
+    weather_delay INTEGER DEFAULT 0,
+    nas_delay INTEGER DEFAULT 0,
+    security_delay INTEGER DEFAULT 0,
+    late_aircraft_delay INTEGER DEFAULT 0,
+    PRIMARY KEY(fl_date, fl_month, fl_year, unique_carrier, fl_num)
+);

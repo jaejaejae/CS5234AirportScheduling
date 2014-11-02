@@ -179,7 +179,9 @@ $k$ is the lower bound and is equal to $ANS$. Therefore, $OPT \geq k = ANS$. We 
 
 After showing that the greedy algorithm is optimal, we use this algorithm on real dataset and the result is shown in Subsection~\ref{subsec:expo-resu}. \par
 
-We also introduce one more interesting problem here: do we need to double the number of gates to support twice as many flights? It is unnecessary to increase the number of gates twice. Suppose that at first intervals $[0, t_1)$ and $[t_1, t_2)$ have the maximum number of overlapping plane taking-off intervals $2x$ and $x$ respectively. Therefore, we need $2x$ gates. Now we double the flights by adding $x$ and $2x$ plane intervals to time $[0, t_1)$ and $[t_1, t_2)$ respectively. Therefore, we will need at most $3x$ gates and $3x$ is not as many as twice of $2x$.
+\subsubsection{Doubling the Number of Gates}
+We also introduce one more interesting problem here: \textbf{do we need to double the number of gates to support twice as many flights?} It depends on how we increase the number of flights. Suppose that at first intervals $[0, t_1)$ and $[t_1, t_2)$ have the maximum number of overlapping plane taking-off intervals $2x$ and $x$ respectively. Therefore, we need $2x$ gates. Now we double the flights by adding $x$ and $2x$ plane intervals to time $[0, t_1)$ and $[t_1, t_2)$ respectively. Therefore, we will need at most $3x$ gates and $3x$ is not as many as twice of $2x$. \par
+In addition, it is also possible that we need more than twice of the number of current gates. Again, assume that at first there are at most $x$ overlapping schedules in both intervals $[0, t_1)$ and $[t_1, t_2)$. We double the number of flights by adding $2x$ planes to the first interval and make those $2x$ planes cover time $t_a$, where there were previously $x$ overlapping intervals. Therefore, now there are $3x$ overlapping intervals. Hence, we need $3x$ gates which is more than two times of the previous number of gates required.
 
 \subsection{Problem 3}
 \label{subsec:algo-prob3}

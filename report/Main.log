@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.25)  26 OCT 2014 20:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.25)  2 NOV 2014 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -387,7 +387,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4] [5]
-(./Main.bbl [6]) [7] (./Main.aux) ) 
+[6] (./Main.bbl) [7] (./Main.aux) ) 
 Here is how much of TeX's memory you used:
  1843 strings out of 493117
  21026 string characters out of 6135432
@@ -408,7 +408,7 @@ amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb>
-Output written on Main.pdf (7 pages, 157559 bytes).
+Output written on Main.pdf (7 pages, 160465 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
