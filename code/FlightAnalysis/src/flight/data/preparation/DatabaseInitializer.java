@@ -34,7 +34,6 @@ public class DatabaseInitializer {
 			FlightInformation info = extract();
 			repository.insert(info);
 		}
-		repository.commit();
 	}
 
 	private FlightInformation extract() {

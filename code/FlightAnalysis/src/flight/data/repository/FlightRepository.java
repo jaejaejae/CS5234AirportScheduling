@@ -6,6 +6,4 @@ public interface FlightRepository {
 	public void insert(FlightInformation info);
 
 	public void clear();
-
-	public void commit();
 }

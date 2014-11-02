@@ -14,8 +14,15 @@ public class SqliteFLightRepository implements FlightRepository {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:flights.db");
-			c.setAutoCommit(false);
 		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setAutoCommit(boolean b) {
+		try {
+			c.setAutoCommit(b);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -67,12 +74,10 @@ public class SqliteFLightRepository implements FlightRepository {
 
 	}
 
-	@Override
 	public void commit() {
 		try {
 			c.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
