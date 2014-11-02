@@ -18,6 +18,4 @@ CREATE TABLE flight (
     weather_delay INTEGER DEFAULT 0,
     nas_delay INTEGER DEFAULT 0,
     security_delay INTEGER DEFAULT 0,
-    late_aircraft_delay INTEGER DEFAULT 0,
-    PRIMARY KEY(fl_date, fl_month, fl_year, unique_carrier, fl_num)
-);
+    late_aircraft_delay INTEGER DEFAULT 0);
