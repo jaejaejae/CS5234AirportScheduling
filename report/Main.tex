@@ -197,8 +197,6 @@ In addition, it is also possible that we need more than twice of the number of c
 
 \subsection{Methodology}
 \label{subsec:expo-meth}
-@TODO: DESCRIBE HOW WE SELECT DATASET AND THE REASON BEHIND
-
 \subsubsection{Data Set Analysis}
 \label{subsec:expo-data}
 \paragraph{Dataset selection}
@@ -269,7 +267,13 @@ In addition, we are also interested in the effect of delays to the number of gat
 
 \subsection{Main Results}
 \label{subsec:expo-resu}
-@TODO: P2 ANALYSIS OF RELATIONSHIP BETWEEN THE NUMBER OF FLIGHTS VS THE NUMBER OF GATES FROM THE REAL DATASET.
+\subsubsection{Algorithm~\ref{algo:p2} performance with no delay} We use January, 1st of each airport to plot the graph as shown in Figure~\ref{fig:gate-flight-nodelay}. With analytical tool in Microsoft Excel, we can estimate the relationship of the number of flights and the number of gates in a linear function: $y = 0.1179x + 2.5506$, where $y$ is the number of gate and $x$ is the number of flights. Therefore, this supports our argument that the number of gates does not increase twice when the number of flights doubles.
+
+\subsubsection{Algorithm~\ref{algo:p2} performance with delays} We do two experiments in this part. We add random delay to the first experiments while we use the actual delays from the dataset in the second experiments.
+\paragraph{Random delays}
+
+\paragraph{Actual delays}
+@TODO: result for P3 
 
 \section{Conclusions and Future Work}
 \label{sec:conc}

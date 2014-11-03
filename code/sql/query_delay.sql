@@ -27,3 +27,11 @@ WHERE f1.fl_date = f2.fl_date
 	AND f1.fl_year = f2.fl_year
 ORDER BY percentage DESC
 LIMIT 10;
+
+SELECT dep_delay
+FROM flight
+WHERE cancelled = 0;
+
+SELECT arr_delay
+FROM flight
+WHERE cancelled = 0;
