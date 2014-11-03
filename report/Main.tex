@@ -267,12 +267,15 @@ In addition, we are also interested in the effect of delays to the number of gat
 
 \subsection{Main Results}
 \label{subsec:expo-resu}
-\subsubsection{Algorithm~\ref{algo:p2} performance with no delay} We use January, 1st of each airport to plot the graph as shown in Figure~\ref{fig:gate-flight-nodelay}. With analytical tool in Microsoft Excel, we can estimate the relationship of the number of flights and the number of gates in a linear function: $y = 0.1179x + 2.5506$, where $y$ is the number of gate and $x$ is the number of flights. Therefore, this supports our argument that the number of gates does not increase twice when the number of flights doubles.
+\subsubsection{The number of Gates} We use January, 1st of each airport to plot the graph as shown in Figure~\ref{fig:gate-flight-nodelay} with an assumption that there are no delays. With analytical tool in Microsoft Excel, we can estimate the relationship of the number of flights and the number of gates in a linear function: $y = 0.1179x + 2.5506$, where $y$ is the number of gate and $x$ is the number of flights. Therefore, this supports our argument that the number of gates does not increase twice when the number of flights doubles.
 
-\subsubsection{Algorithm~\ref{algo:p2} performance with delays} We do two experiments in this part. We add random delay to the first experiments while we use the actual delays from the dataset in the second experiments.
-\paragraph{Random delays}
+\subsubsection{Gate Collisions} We do two experiments in this part. We add random delay to the first experiments while we use the actual delays from the dataset in the second experiments. After adding delays, we add the number of gate collisions. Gate collisions only occur when there is an overlapping between two consecutive intervals of any gate.
+\paragraph{Random delays} Figure~\ref{fig:flight-delay-distribution} shows that the highest probability density is around 0. In other words, most of the time, there are no delays in flights. The density function drops drastically as the delay grows larger. This distribution is one of long-tailed distributions, which have a large number of occurrences around the central part of the distribution. We tried several distribution functions and found that Weibull distribution with $\lambda = 0.7$ and $k = 20$ models the flight delay very well as shown in Figure~\ref{fig:flight-delay-model}. Therefore, we add delays based on this distribution to the result we have found earlier to find the number of gate collisions. Hence, if there is a delay, $d$, in the flight and the original interval is $[s_i, j_i)$, the updated interval will be $[s_i, j_i+d)$. \par
+The result of the experiment is shown in Figure~\ref{fig:flight-collision-random}. The number of gate collisions can be estimated as a linear function with the number of flights, $y = x$, where $y$ is the number of gate collisions and $x$ is the number of flights. \par
+\paragraph{Actual delays} Another experiment is run on the actual taking-off time of each flight. In the date set, there are some flights taking off earlier than scheduling. However, our problem focuses on the effect of delay. Hence, we ignore that information. The result of the experiment is shown in Figure~\ref{fig:flight-collision}. The number of gate collisions of the actual data is fewer than that with random delays and can be estimated as $y = x$. \par
 
-\paragraph{Actual delays}
+\subsubsection{Overflow gates}
+
 @TODO: result for P3 
 
 \section{Conclusions and Future Work}

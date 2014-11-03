@@ -3,6 +3,7 @@ package flight.scheduler;
 import flight.data.DelayType;
 import flight.data.FlightInformation;
 import flight.data.FlightType;
+import flight.scheduler.util.TimeUtil;
 
 public class GateInterval {
 	FlightInformation flightInfo;
@@ -34,7 +35,7 @@ public class GateInterval {
 			crsEndTime = flightInfo.getCrsDepTime();
 			break;
 		}
-		crsEndTime = addTime(crsEndTime, flightType.getPostTime());
+		crsEndTime = TimeUtil.addTime(crsEndTime, flightType.getPostTime());
 	}
 
 	private void computeStartTime() {
@@ -48,7 +49,8 @@ public class GateInterval {
 			break;
 		}
 
-		crsStartTime = subtractTime(crsStartTime, flightType.getPriorTime());
+		crsStartTime = TimeUtil.subtractTime(crsStartTime,
+				flightType.getPriorTime());
 	}
 
 	public int getCrsStartTime() {
@@ -59,30 +61,26 @@ public class GateInterval {
 		return crsEndTime;
 	}
 
+	public int getDelayEndTime() {
+		switch (flightType) {
+		case Arrival:
+			if (flightInfo.getArrDelay() <= 0)
+				return getCrsEndTime();
+			else
+				return TimeUtil.addTime(getCrsEndTime(),
+						flightInfo.getArrDelay());
+		case Departure:
+			if (flightInfo.getDepDelay() <= 0)
+				return getCrsEndTime();
+			else
+				return TimeUtil.addTime(getCrsEndTime(),
+						flightInfo.getDepDelay());
+		}
+		return -1;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("[%d, %d]", getCrsStartTime(), getCrsEndTime());
-	}
-
-	public int addTime(int time, int addMinute) {
-		int minute = time % 100;
-		int hour = time / 100;
-		minute += addMinute;
-		if (minute > 60) {
-			hour += minute / 60;
-			minute %= 60;
-		}
-		return hour * 100 + minute;
-	}
-
-	public int subtractTime(int time, int subtractMinute) {
-		int minute = time % 100;
-		int hour = time / 100;
-		minute -= subtractMinute;
-		while (minute < 0) {
-			hour--;
-			minute += 60;
-		}
-		return hour * 100 + minute;
 	}
 }
