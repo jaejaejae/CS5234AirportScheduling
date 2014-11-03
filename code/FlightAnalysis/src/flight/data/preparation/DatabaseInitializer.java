@@ -40,9 +40,9 @@ public class DatabaseInitializer {
 		int dayOfWeek = getInt(0);
 
 		String[] flightDateParam = contents[1].split("-");
-		int flightDate = Integer.parseInt(flightDateParam[0]);
+		int flightDate = Integer.parseInt(flightDateParam[2]);
 		int flightMonth = Integer.parseInt(flightDateParam[1]);
-		int flightYear = Integer.parseInt(flightDateParam[2]);
+		int flightYear = Integer.parseInt(flightDateParam[0]);
 
 		String uniqueCarrier = contents[2];
 		int flightNum = getInt(3);

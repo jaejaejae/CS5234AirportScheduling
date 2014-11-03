@@ -30,39 +30,23 @@ public class SqliteFlightRepository implements FlightRepository {
 	}
 
 	@Override
-	public void insert(FlightInformation info) {
-		PreparedStatement stm;
+	public ArrayList<Integer> getDistinct(int constraintIndex) {
+		String sql = getDistinctSql(constraintIndex);
+		ArrayList<Integer> distinctValues = new ArrayList<Integer>();
+
 		try {
-			stm = c.prepareStatement("INSERT INTO flight (day_of_week, fl_date, fl_month, fl_year, unique_carrier,"
-					+ "fl_num, origin_airport_id, dest_airport_id, crs_dep_time, dep_time"
-					+ ", dep_delay, crs_arr_time, arr_time, arr_delay, cancelled, carrier_delay"
-					+ ", weather_delay, nas_delay, security_delay, late_aircraft_delay)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			stm.setInt(1, info.getDayOfWeek());
-			stm.setInt(2, info.getFlightDate());
-			stm.setInt(3, info.getFlightMonth());
-			stm.setInt(4, info.getFlightYear());
-			stm.setString(5, info.getUniqueCarrier());
-			stm.setInt(6, info.getFlightNum());
-			stm.setInt(7, info.getOriginAirportId());
-			stm.setInt(8, info.getDestAirportId());
-			stm.setInt(9, info.getCrsDepTime());
-			stm.setInt(10, info.getDepTime());
-			stm.setInt(11, info.getDepDelay());
-			stm.setInt(12, info.getCrsArrTime());
-			stm.setInt(13, info.getArrTime());
-			stm.setInt(14, info.getArrDelay());
-			stm.setInt(15, info.getCancelled());
-			stm.setInt(16, info.getCarrierDelay());
-			stm.setInt(17, info.getWeatherDelay());
-			stm.setInt(18, info.getNasDelay());
-			stm.setInt(19, info.getSecurityDelay());
-			stm.setInt(20, info.getLateAircraftDelay());
-			stm.executeUpdate();
+			PreparedStatement stm = c.prepareStatement(sql);
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				int value = rs.getInt(1);
+				distinctValues.add(value);
+			}
 		} catch (SQLException e) {
-			System.out.println("Cannot execute statement");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return distinctValues;
 	}
 
 	public void clear() {
@@ -145,6 +129,7 @@ public class SqliteFlightRepository implements FlightRepository {
 		for (int index : constraintIndices) {
 			if (!isFirst) {
 				sb.append(" AND ");
+			} else {
 				isFirst = false;
 			}
 			switch (index) {
@@ -232,7 +217,113 @@ public class SqliteFlightRepository implements FlightRepository {
 				return null;
 			}
 		}
-		System.out.println(sb.toString());
 		return sb.toString();
+	}
+
+	public String getDistinctSql(int constraintIndex) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT DISTINCT(");
+		switch (constraintIndex) {
+		case FlightInformation.DAY_OF_WEEK_INDEX:
+			sb.append(String.format(" day_of_week "));
+			break;
+		case FlightInformation.FLIGHT_DATE_INDEX:
+			sb.append(String.format(" fl_date "));
+			break;
+		case FlightInformation.FLIGHT_MONTH_INDEX:
+			sb.append(String.format(" fl_month "));
+			break;
+		case FlightInformation.FLIGHT_YEAR_INDEX:
+			sb.append(String.format(" fl_year "));
+			break;
+		case FlightInformation.UNIQUE_CARRIER_INDEX:
+			sb.append(String.format(" unique_carrier "));
+			break;
+		case FlightInformation.FLIGHT_NUM:
+			sb.append(String.format(" fl_num "));
+			break;
+		case FlightInformation.ORIGIN_AIRPORT_ID:
+			sb.append(String.format(" origin_airport_id "));
+			break;
+		case FlightInformation.DEST_AIRPORT_ID:
+			sb.append(String.format(" dest_airport_id "));
+			break;
+		case FlightInformation.CRS_DEP_TIME:
+			sb.append(String.format(" crs_dep_time "));
+			break;
+		case FlightInformation.DEP_TIME:
+			sb.append(String.format(" dep_time  "));
+			break;
+		case FlightInformation.DEP_DELAY:
+			sb.append(String.format(" dep_delay  "));
+			break;
+		case FlightInformation.CRS_ARR_TIME:
+			sb.append(String.format(" crs_arr_time "));
+			break;
+		case FlightInformation.ARR_TIME:
+			sb.append(String.format(" arr_time  "));
+			break;
+		case FlightInformation.ARR_DELAY:
+			sb.append(String.format(" arr_delay  "));
+			break;
+		case FlightInformation.CANCELLED:
+			sb.append(String.format(" cancelled "));
+			break;
+		case FlightInformation.CARRIER_DELAY:
+			sb.append(String.format(" carrier_delay "));
+			break;
+		case FlightInformation.WEATHER_DELAY:
+			sb.append(String.format(" weather_delay  "));
+			break;
+		case FlightInformation.NAS_DELAY:
+			sb.append(String.format(" nas_delay  "));
+			break;
+		case FlightInformation.SECURITY_DELAY:
+			sb.append(String.format(" security_delay  "));
+			break;
+		case FlightInformation.LATE_AIRCRAFT_DELAY:
+			sb.append(String.format(" late_aircraft_delay  "));
+			break;
+		default:
+			return null;
+		}
+		sb.append(") from flight");
+		return sb.toString();
+	}
+
+	@Override
+	public void insert(FlightInformation info) {
+		PreparedStatement stm;
+		try {
+			stm = c.prepareStatement("INSERT INTO flight (day_of_week, fl_date, fl_month, fl_year, unique_carrier,"
+					+ "fl_num, origin_airport_id, dest_airport_id, crs_dep_time, dep_time"
+					+ ", dep_delay, crs_arr_time, arr_time, arr_delay, cancelled, carrier_delay"
+					+ ", weather_delay, nas_delay, security_delay, late_aircraft_delay)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			stm.setInt(1, info.getDayOfWeek());
+			stm.setInt(2, info.getFlightDate());
+			stm.setInt(3, info.getFlightMonth());
+			stm.setInt(4, info.getFlightYear());
+			stm.setString(5, info.getUniqueCarrier());
+			stm.setInt(6, info.getFlightNum());
+			stm.setInt(7, info.getOriginAirportId());
+			stm.setInt(8, info.getDestAirportId());
+			stm.setInt(9, info.getCrsDepTime());
+			stm.setInt(10, info.getDepTime());
+			stm.setInt(11, info.getDepDelay());
+			stm.setInt(12, info.getCrsArrTime());
+			stm.setInt(13, info.getArrTime());
+			stm.setInt(14, info.getArrDelay());
+			stm.setInt(15, info.getCancelled());
+			stm.setInt(16, info.getCarrierDelay());
+			stm.setInt(17, info.getWeatherDelay());
+			stm.setInt(18, info.getNasDelay());
+			stm.setInt(19, info.getSecurityDelay());
+			stm.setInt(20, info.getLateAircraftDelay());
+			stm.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Cannot execute statement");
+			e.printStackTrace();
+		}
 	}
 }

@@ -6,5 +6,9 @@ import flight.data.FlightInformation;
 
 public interface FlightRepository {
 	public void insert(FlightInformation info);
-	public ArrayList<FlightInformation> getFlights(FlightInformation constraint, ArrayList<Integer> constraintIndices);
+
+	public ArrayList<FlightInformation> getFlights(
+			FlightInformation constraint, ArrayList<Integer> constraintIndices);
+
+	public ArrayList<Integer> getDistinct(int constraintIndex);
 }
