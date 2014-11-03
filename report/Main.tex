@@ -1,5 +1,4 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage{cite}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -7,6 +6,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{cite}
+\usepackage{listings}
+
+
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -196,9 +199,73 @@ In addition, it is also possible that we need more than twice of the number of c
 \label{subsec:expo-meth}
 @TODO: DESCRIBE HOW WE SELECT DATASET AND THE REASON BEHIND
 
-\subsubsection{Data Sets}
+\subsubsection{Data Set Analysis}
 \label{subsec:expo-data}
-@TODO: P1 DATASET ANALYSIS
+\paragraph{Dataset selection}
+We use US flight dataset from Research of Innovative Technology Administration Bureau of Transportation Statistics (RITA)~\cite{rita}. This dataset contains: time period, airline information, origin, destination, departure performance, arrival performance, cancellations and diversions, flight summaries, cause of delay. We are only interested in departure performance and arrival performance which are related to gate scheduling. We decide to use the information in January because there is new year holiday at the beginning of the month and it is interesting to see the effect of holiday on flights. In addition, we decide to choose the most busy airport. We define the most busy airport as the airport with highest number of outgoing and incoming flights. In this section, certain analyses on traffic and on delay are done. The SQL codes used for analysis can be found in Appendix.
+
+\paragraph{Traffic analysis}
+In January, Dallas/Fort Worth International Airport (DFW) of which id is 11298 is the airport with the highest traffic as shown in Table~\ref{fig:airport-flight-out} and Table~\ref{fig:airport-flight-in}.\par
+
+\begin{table}
+\caption{Airports with top 5 highest number of outgoing flights}
+\centering
+\begin{tabular}{| c | c |}
+\hline
+airportId & total flights \\
+\hline
+11298&23488 \\
+13930&21497 \\
+12892&18481 \\
+11292&17977 \\
+12266&14581 \\
+\hline
+\end{tabular}
+\label{fig:airport-flight-out}
+\end{table}
+
+\begin{table}
+\caption{Airports with top 5 highest number of incoming flights}
+\centering
+\begin{tabular}{| c | c |}
+\hline
+airportId & total flights \\
+\hline
+10397&30784 \\
+11298&23482 \\
+13930&21529 \\
+12892&18474 \\
+11292&17955 \\
+\hline
+\end{tabular}
+\label{fig:airport-flight-in}
+\end{table}
+
+In addition, the top three dates with the highest number of flight are 3rd, 2nd, and 6th January. This is reasonable because they are at the end of the new year holiday where people need to go back home and come back from their vacation.
+
+\paragraph{Delay Analysis}
+Regarding delay, there are 255198 flights with delay while there are only 471949 flights. Therefore, more than half of the flights are delayed. Hence, airport scheduling should consider the delay effect as well. This is what we model in Problem 3. \par
+Based on outgoing flights from DFW where there is the highest traffic, the top three days with highest delay are 6th, 2nd, and 9th January. This is quite reasonable as people travel a lot at the beginning of the month due to New Year holiday. In addition, the first two days also has rankings amongst the top three days with the highest number of total flights in DFW as shown in Table~\ref{table:airport-dfw-delay}
+
+\begin{table}
+\caption{Days with highest number of flights and highest average delays in DFW}
+\centering
+\begin{tabular}{| c | c | c | c |}
+\hline
+Order & Most traffic & Highest average delay & Average delay \\
+\hline
+1 & 2 January 2014 & 6 January 2014 & 33.62\\
+2 & 3 January 2014 & 2 January 2014 & 23.96\\
+3 & 6 January 2014 & 9 January 2014 & 21.63\\
+4 & 31 January 2014 & 5 January 2014 & 21.60\\
+5 & 17 January 2014 & 7 January 2014 & 19.44\\
+\hline
+\end{tabular}
+\label{table:airport-dfw-delay}
+\end{table}
+
+Knowing that the most traffic happens on these five days, we run our scheduling algorithm assuming that there is no delay to find out how many gates we need. The result can be found in Section~\ref{subsec:expo-resu}. \par 
+In addition, we are also interested in the effect of delays to the number of gates. We decide to run our algorithm on 2nd of January to see how well the algorithm does when there are a lot of delays. In addition, we also decide to run an experiment on 15th January which have the lowest average delay, 4.21 minutes.
 
 \subsection{Main Results}
 \label{subsec:expo-resu}
@@ -210,5 +277,59 @@ In addition, it is also possible that we need more than twice of the number of c
 \bibliographystyle{unsrt}
 \bibliography{ref}
 
+\section*{Appendix}
+\subsection*{SQL Queries for Dataset Analysis}
+\begin{enumerate}
+\item Find airports with top 5 highest number of outgoing flights
+\begin{lstlisting}[frame=single, language=SQL]
+SELECT origin_airport_id\
+	, COUNT(*) as origin_total_flights
+FROM flight
+GROUP BY origin_airport_id
+ORDER BY origin_total_flights DESC ;
+\end{lstlisting}
+\item Find airports with top 5 highest number of incoming flights
+\begin{lstlisting}[frame=single, language=SQL]
+SELECT dest_airport_id
+	, COUNT(*) as dest_total_flights
+FROM flight
+GROUP BY dest_airport_id
+ORDER BY dest_total_flights DESC ;
+\end{lstlisting}
+\item Find the total number of delays
+
+\begin{lstlisting}[frame=single, language=SQL]
+SELECT fl_date, fl_month, fl_year
+	, COUNT(*) as total_delay
+FROM flight
+WHERE cancelled = 0 AND dep_delay > 0
+GROUP BY fl_date, fl_month, fl_year
+ORDER BY total_delay DESC;
+\end{lstlisting}
+\item Find the average delay of DFW airport of each day.
+\begin{lstlisting}[frame=single, language=SQL]
+SELECT f1.fl_date, f1.fl_month, f1.fl_year
+	, 1.0*f2.total_delay/f1.total_flight 
+	as percentage
+FROM
+	(SELECT fl_date, fl_month, fl_year
+	, COUNT(*) as total_flight
+	FROM flight
+	WHERE origin_airport_id = 11298
+	GROUP BY fl_date, fl_month, fl_year) f1,
+	(SELECT fl_date, fl_month, fl_year
+	, SUM(dep_delay) as total_delay
+	FROM flight
+	WHERE origin_airport_id = 11298
+		AND cancelled = 0
+		AND dep_delay > 0
+	GROUP BY fl_date, fl_month, fl_year ) f2
+WHERE f1.fl_date = f2.fl_date
+	AND f1.fl_month = f2.fl_month
+	AND f1.fl_year = f2.fl_year
+ORDER BY percentage DESC
+LIMIT 10;
+\end{lstlisting}
+\end{enumerate}
 
 \end{document}

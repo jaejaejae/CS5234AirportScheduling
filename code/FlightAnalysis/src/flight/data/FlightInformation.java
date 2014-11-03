@@ -2,6 +2,27 @@ package flight.data;
 
 public class FlightInformation {
 
+	public static final int DAY_OF_WEEK_INDEX = 1;
+	public static final int FLIGHT_DATE_INDEX = 2;
+	public static final int FLIGHT_MONTH_INDEX = 3;
+	public static final int FLIGHT_YEAR_INDEX = 4;
+	public static final int UNIQUE_CARRIER_INDEX = 5;
+	public static final int FLIGHT_NUM = 6;
+	public static final int ORIGIN_AIRPORT_ID = 7;
+	public static final int DEST_AIRPORT_ID = 8;
+	public static final int CRS_DEP_TIME = 9;
+	public static final int DEP_TIME = 10;
+	public static final int DEP_DELAY = 11;
+	public static final int CRS_ARR_TIME = 12;
+	public static final int ARR_TIME = 13;
+	public static final int ARR_DELAY = 14;
+	public static final int CANCELLED = 15;
+	public static final int CARRIER_DELAY = 16;
+	public static final int WEATHER_DELAY = 17;
+	public static final int NAS_DELAY = 18;
+	public static final int SECURITY_DELAY = 19;
+	public static final int LATE_AIRCRAFT_DELAY = 20;
+
 	int dayOfWeek;
 	int flightDate;
 	int flightMonth;
@@ -162,4 +183,52 @@ public class FlightInformation {
 
 		return sb.toString();
 	}
+
+	public Object getInfo(int index) {
+		switch (index) {
+		case DAY_OF_WEEK_INDEX:
+			return dayOfWeek;
+		case FLIGHT_DATE_INDEX:
+			return flightDate;
+		case FLIGHT_MONTH_INDEX:
+			return flightMonth;
+		case FLIGHT_YEAR_INDEX:
+			return flightYear;
+		case UNIQUE_CARRIER_INDEX:
+			return uniqueCarrier;
+		case FLIGHT_NUM:
+			return flightNum;
+		case ORIGIN_AIRPORT_ID:
+			return originAirportId;
+		case DEST_AIRPORT_ID:
+			return destAirportId;
+		case CRS_DEP_TIME:
+			return crsDepTime;
+		case DEP_TIME:
+			return depTime;
+		case DEP_DELAY:
+			return depDelay;
+		case CRS_ARR_TIME:
+			return crsArrTime;
+		case ARR_TIME:
+			return arrTime;
+		case ARR_DELAY:
+			return arrDelay;
+		case CANCELLED:
+			return cancelled;
+		case CARRIER_DELAY:
+			return carrierDelay;
+		case WEATHER_DELAY:
+			return weatherDelay;
+		case NAS_DELAY:
+			return nasDelay;
+		case SECURITY_DELAY:
+			return securityDelay;
+		case LATE_AIRCRAFT_DELAY:
+			return lateAircraftDelay;
+		default:
+			return null;
+		}
+	}
+
 }
