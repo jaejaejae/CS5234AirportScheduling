@@ -56,11 +56,14 @@ public class GateOverflowAlgo4App {
 				pw.println(String.format("%d, %d, %d, %d",
 						flightSchedulerApp.getTotalFlights(), beginingGate,
 						totalCollisions, totalOverflow));
+				// System.out.println(String.format("%d, %d, %d, %d",
+				// flightSchedulerApp.getTotalFlights(), beginingGate,
+				// totalCollisions, totalOverflow));
 				// System.out.println(gateOverflow.getGateIntervals(0));
 				count++;
 				System.out.println(count);
 			}
-			if (count > 10)
+			if (count > 1000)
 				break;
 		}
 

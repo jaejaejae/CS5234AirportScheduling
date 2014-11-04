@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.1)  4 NOV 2014 10:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.1)  4 NOV 2014 13:44
 entering extended mode
 **Main.tex
 ("C:\Users\workshop\Dropbox\NUS Coursework\CS5234\MiniProject\report\Main.tex"
@@ -355,32 +355,60 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count105
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count105
+\lst@mode=\count106
 \lst@gtempboxa=\box30
 \lst@token=\toks31
-\lst@length=\count106
-\lst@currlwidth=\dimen112
-\lst@column=\count107
-\lst@pos=\count108
-\lst@lostspace=\dimen113
-\lst@width=\dimen114
-\lst@newlines=\count109
-\lst@lineno=\count110
-\lst@maxwidth=\dimen115
+\lst@length=\count107
+\lst@currlwidth=\dimen114
+\lst@column=\count108
+\lst@pos=\count109
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count110
+\lst@lineno=\count111
+\lst@maxwidth=\dimen117
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
-\c@lstnumber=\count111
-\lst@skipnumbers=\count112
+\c@lstnumber=\count112
+\lst@skipnumbers=\count113
 \lst@framebox=\box31
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
 Package: listings 2014/09/06 1.5e (Carsten Heinz)
-\c@theorem=\count113
-\c@corollary=\count114
+\c@theorem=\count114
+\c@corollary=\count115
 
 ("C:\Users\workshop\Dropbox\NUS Coursework\CS5234\MiniProject\report\Main.aux"
 
@@ -390,24 +418,38 @@ LaTeX Warning: Label `algo:p2:newGate' multiply defined.
 LaTeX Warning: Label `algo:p2:schedule' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-\c@lstlisting=\count115
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count116
+\scratchdimen=\dimen118
+\scratchbox=\box32
+\nofMPsegments=\count117
+\nofMParguments=\count118
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count119
+\MPscratchDim=\dimen119
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
+\everyMPtoPDFconversion=\toks33
+)
+\c@lstlisting=\count122
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -415,48 +457,85 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6] [7] [
 8]
+<img-gate-flight-nodelay.png, id=38, 356.0803pt x 221.32687pt>
+File: img-gate-flight-nodelay.png Graphic file (type png)
 
-LaTeX Warning: Reference `fig:gate-flight-nodelay' on page 9 undefined on input
- line 316.
+<use img-gate-flight-nodelay.png>
+Package pdftex.def Info: img-gate-flight-nodelay.png used on input line 319.
+(pdftex.def)             Requested size: 288.0011pt x 179.01709pt.
+ [9 <C:/Users/workshop/Dropbox/NUS Coursework/CS5234/MiniProject/report/img-gat
+e-flight-nodelay.png>]
 
+LaTeX Warning: Reference `fig:flight-delay-model' on page 10 undefined on input
+ line 325.
 
-LaTeX Warning: Reference `fig:flight-delay-distribution' on page 9 undefined on
- input line 319.
+<img-flight-delay-distribution.png, id=42, 362.10281pt x 221.32687pt>
+File: img-flight-delay-distribution.png Graphic file (type png)
 
+<use img-flight-delay-distribution.png>
+Package pdftex.def Info: img-flight-delay-distribution.png used on input line 3
+28.
+(pdftex.def)             Requested size: 288.0011pt x 176.03505pt.
 
-LaTeX Warning: Reference `fig:flight-delay-model' on page 9 undefined on input 
-line 319.
-
-[9]
 
 LaTeX Warning: Reference `fig:flight-collision-random' on page 10 undefined on 
-input line 320.
+input line 332.
+
+<img-flight-collision-random.png, id=43, 335.00156pt x 234.8775pt>
+File: img-flight-collision-random.png Graphic file (type png)
+
+<use img-flight-collision-random.png>
+Package pdftex.def Info: img-flight-collision-random.png used on input line 335
+.
+(pdftex.def)             Requested size: 288.0011pt x 201.9226pt.
 
 
 LaTeX Warning: Reference `fig:flight-collision' on page 10 undefined on input l
-ine 321.
+ine 339.
 
-("C:\Users\workshop\Dropbox\NUS Coursework\CS5234\MiniProject\report\Main.bbl")
+<img-flight-collision.png, id=44, 365.86688pt x 234.8775pt>
+File: img-flight-collision.png Graphic file (type png)
+
+<use img-flight-collision.png>
+Package pdftex.def Info: img-flight-collision.png used on input line 342.
+(pdftex.def)             Requested size: 288.0011pt x 184.89891pt.
+ [10 <C:/Users/workshop/Dropbox/NUS Coursework/CS5234/MiniProject/report/img-fl
+ight-delay-distribution.png>]
+<img-overflow.png, id=48, 1096.095pt x 222.07968pt>
+File: img-overflow.png Graphic file (type png)
+ <use img-overflow.png>
+Package pdftex.def Info: img-overflow.png used on input line 351.
+(pdftex.def)             Requested size: 431.9989pt x 87.52904pt.
+
+Overfull \hbox (71.9989pt too wide) in paragraph at lines 351--352
+ [][] 
+ []
+
+("C:\Users\workshop\Dropbox\NUS Coursework\CS5234\MiniProject\report\Main.bbl"
+[11 <C:/Users/workshop/Dropbox/NUS Coursework/CS5234/MiniProject/report/img-fli
+ght-collision-random.png>] [12 <C:/Users/workshop/Dropbox/NUS Coursework/CS5234
+/MiniProject/report/img-flight-collision.png> <C:/Users/workshop/Dropbox/NUS Co
+ursework/CS5234/MiniProject/report/img-overflow.png>])
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2014/09/06 1.5e listings language file
-) [10]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 338.
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 367.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 338.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 358.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 367.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 387.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 358.
- [11] [12]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 387.
+ [13] [14]
 ("C:\Users\workshop\Dropbox\NUS Coursework\CS5234\MiniProject\report\Main.aux")
 
 LaTeX Warning: There were undefined references.
@@ -466,13 +545,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3764 strings out of 493705
- 46332 string characters out of 3144561
- 142389 words of memory out of 3000000
- 7058 multiletter control sequences out of 15000+200000
+ 4659 strings out of 493705
+ 58869 string characters out of 3144561
+ 150435 words of memory out of 3000000
+ 7920 multiletter control sequences out of 15000+200000
  11698 words of font info for 44 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 27i,7n,42p,964b,1679s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,7n,42p,1149b,1679s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -483,9 +562,9 @@ msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Main.pdf (12 pages, 189092 bytes).
+Output written on Main.pdf (14 pages, 240825 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
+ 97 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

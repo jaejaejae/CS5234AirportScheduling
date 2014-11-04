@@ -26,7 +26,7 @@ public abstract class GateCollisionCounter {
 			if (newEndTime > nextGateInterval.getCrsStartTime()) {
 				collisionGates.add(new CustomGateInterval(nextGateInterval
 						.getFlightInfo(), nextGateInterval.getCrsStartTime(),
-						nextGateInterval.getCrsEndTime()));
+						nextGateInterval.getDelayEndTime()));
 				tobeRemoved.add(i);
 			}
 			Collections.reverse(tobeRemoved);

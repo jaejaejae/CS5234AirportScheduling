@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{cite}
+\usepackage{graphicx}
 \usepackage{listings}
 
 
@@ -188,7 +189,7 @@ In addition, it is also possible that we need more than twice of the number of c
 
 \subsection{Problem 3}
 \label{subsec:algo-prob3}
-Most of the time, the flights are delayed and rescheduling is required. Sometimes, we need overflow gates if there are not enough gates. Overflow gates happen when we have already scheduled a plane to the gate; however, there is a delay from the previous flight. Therefore, the gate must be occupied for the previous flight longer than expected. Hence, the incoming flight has to go to an overflow gate. In this section, we develop an algorithm for solving this problem. Although the optimal solution requires rescheduling all the future flights from the point of gate collision as shown in Algorithm~\ref{algo:p3-opt}. We are not interested in that solution as the time complexity is large and it is costly to reschedule every other flight. Let each gate interval has two kinds of intervals: the scheduled interval, $[s_i, t_i)$, and the actual interval, $[s_i*, t_i*)$. We propose Algorithm~\ref{algo:p3} to solve the gate collision.\par
+Most of the time, the flights are delayed and rescheduling is required. Sometimes, we need overflow gates if there are not enough gates. Overflow gates happen when we have already scheduled a plane to the gate; however, there is a delay from the previous flight. Therefore, the gate must be occupied for the previous flight longer than expected. Hence, the incoming flight has to go to an overflow gate. In this section, we develop an algorithm for solving this problem. Although the optimal solution requires rescheduling all the future flights from the point of gate collision as shown in Algorithm~\ref{algo:p3-opt}. We are not interested in that solution as the time complexity is large and it is costly to reschedule every other flight. Let each gate interval has two kinds of intervals: the scheduled interval, $[s_i, t_i)$, and the actual interval, $[s_i*, t_i*)$. We propose Algorithm~\ref{algo:p3} to solve the gate collision. In addition, we propose another algorithm that takes all the collided gate intervals and run Algorithm~\ref{algo:p2} on those collided gate intervals to find the number of total gates.\par
 
 \begin{algorithm}
 \caption{optimal overflow gate scheduling}
@@ -289,7 +290,7 @@ In addition, the top three dates with the highest number of flight are 3rd, 2nd,
 
 \paragraph{Delay Analysis}
 Regarding delay, there are 255198 flights with delay while there are only 471949 flights. Therefore, more than half of the flights are delayed. Hence, airport scheduling should consider the delay effect as well. This is what we model in Problem 3. \par
-Based on outgoing flights from DFW where there is the highest traffic, the top three days with highest delay are 6th, 2nd, and 9th January. This is quite reasonable as people travel a lot at the beginning of the month due to New Year holiday. In addition, the first two days also has rankings amongst the top three days with the highest number of total flights in DFW as shown in Table~\ref{table:airport-dfw-delay}
+Based on outgoing flights from DFW where there is the highest traffic, the top three days with highest delay are 6th, 2nd, and 9th January. This is quite reasonable as people travel a lot at the beginning of the month due to New Year holiday. In addition, the first two days also has rankings amongst the top three days with the highest number of total flights in DFW as shown in Table~\ref{table:airport-dfw-delay}.
 
 \begin{table}
 \caption{Days with highest number of flights and highest average delays in DFW}
@@ -308,21 +309,49 @@ Order & Most traffic & Highest average delay & Average delay \\
 \label{table:airport-dfw-delay}
 \end{table}
 
-Knowing that the most traffic happens on these five days, we run our scheduling algorithm assuming that there is no delay to find out how many gates we need. The result can be found in Section~\ref{subsec:expo-resu}. \par 
-In addition, we are also interested in the effect of delays to the number of gates. We decide to run our algorithm on 2nd of January to see how well the algorithm does when there are a lot of delays. In addition, we also decide to run an experiment on 15th January which have the lowest average delay, 4.21 minutes.
+%Knowing that the most traffic happens on these five days, we run our scheduling algorithm assuming that there is no delay to find out how many gates we need. The result can be found in Section~\ref{subsec:expo-resu}. \par 
+%In addition, we are also interested in the effect of delays to the number of gates. We decide to run our algorithm on 2nd of January to see how well the algorithm does when there are a lot of delays. In addition, we also decide to run an experiment on 15th January which have the lowest average delay, 4.21 minutes.
 
 \subsection{Main Results}
 \label{subsec:expo-resu}
-\subsubsection{The number of Gates} We use January, 1st of each airport to plot the graph as shown in Figure~\ref{fig:gate-flight-nodelay} with an assumption that there are no delays. With analytical tool in Microsoft Excel, we can estimate the relationship of the number of flights and the number of gates in a linear function: $y = 0.1179x + 2.5506$, where $y$ is the number of gate and $x$ is the number of flights. Therefore, this supports our argument that the number of gates does not increase twice when the number of flights doubles.
+\subsubsection{The number of Gates} We use January, 1st of each airport to plot the graph as shown in Figure~\ref{fig:gate-flight-nodelay} with an assumption that there are no delays. With analytical tool in Microsoft Excel, we can estimate the relationship of the number of flights and the number of gates in a linear function: $y = 0.1179x + 2.5506$, where $y$ is the number of gate and $x$ is the number of flights. Therefore, this supports our argument that the number of gates does not increase twice when the number of flights doubles.\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img-gate-flight-nodelay.png}
+    \caption{Relationship between the number of flights and the number of gates when there is no delay}
+    \label{fig:gate-flight-nodelay}
+\end{figure}
 
 \subsubsection{Gate Collisions} We do two experiments in this part. We add random delay to the first experiments while we use the actual delays from the dataset in the second experiments. After adding delays, we add the number of gate collisions. Gate collisions only occur when there is an overlapping between two consecutive intervals of any gate.
 \paragraph{Random delays} Figure~\ref{fig:flight-delay-distribution} shows that the highest probability density is around 0. In other words, most of the time, there are no delays in flights. The density function drops drastically as the delay grows larger. This distribution is one of long-tailed distributions, which have a large number of occurrences around the central part of the distribution. We tried several distribution functions and found that Weibull distribution with $\lambda = 0.7$ and $k = 20$ models the flight delay very well as shown in Figure~\ref{fig:flight-delay-model}. Therefore, we add delays based on this distribution to the result we have found earlier to find the number of gate collisions. Hence, if there is a delay, $d$, in the flight and the original interval is $[s_i, j_i)$, the updated interval will be $[s_i, j_i+d)$. \par
-The result of the experiment is shown in Figure~\ref{fig:flight-collision-random}. The number of gate collisions can be estimated as a linear function with the number of flights, $y = x$, where $y$ is the number of gate collisions and $x$ is the number of flights. \par
-\paragraph{Actual delays} Another experiment is run on the actual taking-off time of each flight. In the date set, there are some flights taking off earlier than scheduling. However, our problem focuses on the effect of delay. Hence, we ignore that information. The result of the experiment is shown in Figure~\ref{fig:flight-collision}. The number of gate collisions of the actual data is fewer than that with random delays and can be estimated as $y = x$. \par
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img-flight-delay-distribution.png}
+    \caption{Comparison between the real delay and our estimated delay}
+    \label{fig:flight-delay-distribution}
+\end{figure}
+The result of the experiment is shown in Figure~\ref{fig:flight-collision-random}. The number of gate collisions can be estimated as a linear function with the number of flights, $y = 03.693x-7.3281$, where $y$ is the number of gate collisions and $x$ is the number of flights. \par
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img-flight-collision-random.png}
+    \caption{Relationship between the number of gate collisions and the number of flights with random delay}
+    \label{fig:gate-flight-collision-random}
+\end{figure}
+\paragraph{Actual delays} Another experiment is run on the actual taking-off time of each flight. In the date set, there are some flights taking off earlier than scheduling. However, our problem focuses on the effect of delay. Hence, we ignore that information. The result of the experiment is shown in Figure~\ref{fig:flight-collision}. The number of gate collisions of the actual data is fewer than that with random delays and can be estimated as $y = 0.2502x-5.3475$. \par
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img-flight-collision.png}
+    \caption{Relationship between the number of gate collisions and the number of flights with actual delay}
+    \label{fig:gate-flight-collision}
+\end{figure}
 
 \subsubsection{Overflow gates}
-
-@TODO: result for P3 
+In this section, we use the first day of January data for all the airport. We run three algorithms to handle the delays: the optimal Algorithm~\ref{algo:p3-opt}, our Algorithm~\ref{algo:p3}, and the one that runs Algorithm~\ref{algo:p2} on all the collided flights and the results are shown in Figure~\ref{fig:overflow}. It is shown that our proposed Algorithm~\ref{algo:p3} has similar performance to the optimal solution. It is more suitable to use this algorithm when rescheduling is expensive.
+\begin{figure}
+    \centering
+    \includegraphics[width=1.2\textwidth]{img-overflow.png}
+    \caption{The left figure shows the relationship between the number of optimal gates given a list of flights with actual delay. The middle figure shows the number of gates from Algorith~\ref{algo:p3}. The right most figure shows the result from the algorithm that schedules all gate collisions.}
+    \label{fig:overflow}
+\end{figure}
 
 \section{Conclusions and Future Work}
 \label{sec:conc}
