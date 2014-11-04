@@ -38,7 +38,10 @@ public class FlightScheduler {
 		if (pq.isEmpty())
 			return -1;
 		GateIntervalPair pair = pq.peek();
-		if (pair.interval.getCrsEndTime() > interval.getCrsStartTime())
+		if (pair.interval.getCrsEndTime() > interval.getCrsStartTime()) // TODO:
+																		// Delay
+																		// VS
+																		// Crs
 			return -1;
 		pq.poll();
 		return pair.index;
@@ -50,14 +53,6 @@ public class FlightScheduler {
 
 	public ArrayList<GateInterval> getSequences(int i) {
 		return scheduledGates.get(i);
-	}
-
-	class GateIntervalCrsStartTimeComparator implements
-			Comparator<GateInterval> {
-		@Override
-		public int compare(GateInterval o1, GateInterval o2) {
-			return o1.getCrsStartTime() - o2.getCrsStartTime();
-		}
 	}
 
 	class GateIntervalPairCrsEndTimeComparator implements
@@ -78,6 +73,10 @@ public class FlightScheduler {
 			this.interval = interval;
 			this.index = index;
 		}
+	}
+
+	public ArrayList<ArrayList<GateInterval>> getAllSequences() {
+		return scheduledGates;
 	}
 
 }

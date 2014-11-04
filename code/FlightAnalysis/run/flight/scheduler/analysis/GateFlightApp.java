@@ -13,7 +13,8 @@ public class GateFlightApp {
 	public static void main(String[] args) {
 		PrintWriter pw = null;
 		try {
-			pw = new PrintWriter(new File("totalFlights_totalGates.txt"));
+			pw = new PrintWriter(new File(
+					"totalFlights_totalGates_delay_optimal.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -27,7 +28,7 @@ public class GateFlightApp {
 						airport, i, 1, 2014);
 				flightSchedulerApp.begin();
 
-				pw.println(String.format("%d\t%d",
+				pw.println(String.format("%d, %d",
 						flightSchedulerApp.getTotalFlights(),
 						flightSchedulerApp.getTotalGates()));
 				count++;

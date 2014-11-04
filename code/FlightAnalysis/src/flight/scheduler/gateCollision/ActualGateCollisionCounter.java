@@ -14,5 +14,4 @@ public class ActualGateCollisionCounter extends GateCollisionCounter {
 	protected int getNewEndTime(GateInterval gateInterval) {
 		return gateInterval.getDelayEndTime();
 	}
-
 }

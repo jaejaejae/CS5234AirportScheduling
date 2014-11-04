@@ -25,7 +25,7 @@ public class GateInterval {
 		computeEndTime();
 	}
 
-	private void computeEndTime() {
+	protected void computeEndTime() {
 		crsEndTime = 0;
 		switch (flightType) {
 		case Arrival:
@@ -38,7 +38,7 @@ public class GateInterval {
 		crsEndTime = TimeUtil.addTime(crsEndTime, flightType.getPostTime());
 	}
 
-	private void computeStartTime() {
+	protected void computeStartTime() {
 		crsStartTime = 0;
 		switch (flightType) {
 		case Arrival:
@@ -82,5 +82,9 @@ public class GateInterval {
 	@Override
 	public String toString() {
 		return String.format("[%d, %d]", getCrsStartTime(), getCrsEndTime());
+	}
+
+	public FlightInformation getFlightInfo() {
+		return flightInfo;
 	}
 }

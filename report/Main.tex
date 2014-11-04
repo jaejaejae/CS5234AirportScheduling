@@ -188,6 +188,52 @@ In addition, it is also possible that we need more than twice of the number of c
 
 \subsection{Problem 3}
 \label{subsec:algo-prob3}
+Most of the time, the flights are delayed and rescheduling is required. Sometimes, we need overflow gates if there are not enough gates. Overflow gates happen when we have already scheduled a plane to the gate; however, there is a delay from the previous flight. Therefore, the gate must be occupied for the previous flight longer than expected. Hence, the incoming flight has to go to an overflow gate. In this section, we develop an algorithm for solving this problem. Although the optimal solution requires rescheduling all the future flights from the point of gate collision as shown in Algorithm~\ref{algo:p3-opt}. We are not interested in that solution as the time complexity is large and it is costly to reschedule every other flight. Let each gate interval has two kinds of intervals: the scheduled interval, $[s_i, t_i)$, and the actual interval, $[s_i*, t_i*)$. We propose Algorithm~\ref{algo:p3} to solve the gate collision.\par
+
+\begin{algorithm}
+\caption{optimal overflow gate scheduling}
+\label{algo:p3-opt}
+\begin{algorithmic}
+\STATE \textbf{Given} $G$, a set of gate with scheduled flights.
+\STATE \textbf{Given} $C$, a set of intervals of gate collision.
+\STATE $A \gets \{[s_i*, t_i*) | i \in C\} \cup \{[s_i, t_i) | i \in G-C\}$
+\STATE \textbf{sort} $A$ by its starting time.
+\STATE $G \gets \emptyset$
+\FORALL{$a_i$ in A}
+	\STATE $g \gets $ a gate, $g \in G$, vacant at $s_i$.
+	\IF{There is no such $g$}
+		\STATE $g \gets$ a new gate \label{algo:p2:newGate}
+		\STATE $G \gets G \cup \{g\}$
+	\ENDIF
+	\STATE schedule $a_i$ to $g$ \label{algo:p2:schedule}
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{overflow gate scheduling}\label{algo:p3}
+\begin{algorithmic}
+\STATE \textbf{Given} $G$, a set of gate with scheduled flights.
+\STATE \textbf{Given} $C$, a set of intervals of gate collision.
+\STATE remove $C$ from $G$.
+\STATE $O \gets \emptyset$
+\STATE \textbf{Sort} $C$ by starting time
+\FORALL{$[s_i*, t_i*)$ in $C$}
+	\STATE $g \gets $ a gate, $g \in G$, vacant at $[s_i*, t_i*)$
+	\IF{There is no such $g$}
+		\STATE $o \gets $ a gate $\in O$, vacant at $[s_i*, t_i*)$
+		\IF{There is no such $o$}
+			\STATE $o \gets$ a new gate
+			\STATE $O \gets O \cup \{o\}$
+		\ENDIF
+		\STATE $g \gets o$
+	\ENDIF
+	\STATE schedule $[s_i*, t_i*)$ to $g$
+\ENDFOR
+\RETURN a set of overflow gate, $O$
+\end{algorithmic}
+\end{algorithm}
+
 
 \subsection{Problem 4}
 \label{subsec:algo-prob4}
