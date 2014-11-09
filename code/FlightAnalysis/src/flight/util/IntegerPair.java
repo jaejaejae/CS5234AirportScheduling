@@ -1,6 +1,6 @@
 package flight.util;
 
-public class IntegerPair {
+public class IntegerPair implements Comparable<IntegerPair> {
 	int first;
 	int second;
 
@@ -16,4 +16,10 @@ public class IntegerPair {
 	public int getSecond() {
 		return second;
 	}
+
+	@Override
+	public int compareTo(IntegerPair arg0) {
+		return new Integer(this.first).compareTo(new Integer(arg0.first));
+	}
+
 }

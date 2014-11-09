@@ -11,9 +11,15 @@ public class FlightScheduler {
 	PriorityQueue<GateIntervalPair> pq;
 
 	ArrayList<ArrayList<GateInterval>> scheduledGates = new ArrayList<>();
+	private int buffer = 0;
 
 	public FlightScheduler(List<GateInterval> gateIntervals) {
 		this.gateIntervals = gateIntervals;
+	}
+
+	public FlightScheduler(List<GateInterval> gateIntervals, int buffer) {
+		this.gateIntervals = gateIntervals;
+		this.buffer = buffer;
 	}
 
 	public void startScheduling() {
@@ -38,10 +44,7 @@ public class FlightScheduler {
 		if (pq.isEmpty())
 			return -1;
 		GateIntervalPair pair = pq.peek();
-		if (pair.interval.getCrsEndTime() > interval.getCrsStartTime()) // TODO:
-																		// Delay
-																		// VS
-																		// Crs
+		if (pair.interval.getCrsEndTime() + buffer > interval.getCrsStartTime())
 			return -1;
 		pq.poll();
 		return pair.index;

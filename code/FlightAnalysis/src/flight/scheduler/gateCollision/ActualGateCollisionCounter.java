@@ -12,6 +12,8 @@ public class ActualGateCollisionCounter extends GateCollisionCounter {
 
 	@Override
 	protected int getNewEndTime(GateInterval gateInterval) {
+		if (gateInterval.getDelayEndTime() < gateInterval.getCrsEndTime())
+			return gateInterval.getCrsEndTime();
 		return gateInterval.getDelayEndTime();
 	}
 }

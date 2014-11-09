@@ -21,6 +21,8 @@ public class FlightSchedulerApp {
 	FlightScheduler scheduler;
 	int totalFlights = 0;
 
+	private int tau = 0;
+
 	public static void main(String[] args) {
 		new FlightSchedulerApp(DFW_AIRPORT_ID, 1, 1, 2014).begin();
 	}
@@ -30,6 +32,11 @@ public class FlightSchedulerApp {
 		this.date = date;
 		this.month = month;
 		this.year = year;
+	}
+
+	public FlightSchedulerApp(int airport, int i, int j, int k, int tau) {
+		this(airport, i, j, k);
+		this.tau = tau;
 	}
 
 	public void begin() {
@@ -65,7 +72,7 @@ public class FlightSchedulerApp {
 		}
 
 		totalFlights = gateIntervals.size();
-		scheduler = new FlightScheduler(gateIntervals);
+		scheduler = new FlightScheduler(gateIntervals, tau);
 		scheduler.startScheduling();
 
 		// System.out.println("Total gates: " + scheduler.getTotalGates());

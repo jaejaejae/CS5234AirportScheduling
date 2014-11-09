@@ -33,6 +33,11 @@ public class CustomGateInterval extends GateInterval {
 	}
 
 	@Override
+	public int getDelayEndTime() {
+		return customEndTime;
+	}
+
+	@Override
 	public String toString() {
 		return String.format("[%d, %d]", getCrsStartTime(), getCrsEndTime());
 	}

@@ -87,4 +87,9 @@ public class GateInterval {
 	public FlightInformation getFlightInfo() {
 		return flightInfo;
 	}
+
+	public void setCrsEndTime(int i) {
+		this.crsEndTime = crsEndTime;
+
+	}
 }

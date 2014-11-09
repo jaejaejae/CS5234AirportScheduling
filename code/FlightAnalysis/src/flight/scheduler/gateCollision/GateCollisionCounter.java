@@ -49,4 +49,9 @@ public abstract class GateCollisionCounter {
 	public int getTotalDelay() {
 		return totalDelay;
 	}
+
+	public ArrayList<GateInterval> getSchedules() {
+
+		return allSortedGateIntervals;
+	}
 }
